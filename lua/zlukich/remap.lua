@@ -75,6 +75,26 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- Toggle maximize the current window (restores exact previous layout on second press)
+local saved_layout = nil
+local function toggle_maximize()
+    if saved_layout then
+        vim.cmd(saved_layout)
+        saved_layout = nil
+    else
+        saved_layout = vim.fn.winrestcmd() -- remember every window's size
+        vim.cmd("vertical resize | resize") -- max width + height
+    end
+end
+vim.keymap.set("n", "<leader>m", toggle_maximize)
+-- Same toggle from inside a terminal (e.g. the Claude Code window): leave
+-- terminal mode first, then toggle. Returns to the (now resized) window.
+vim.keymap.set("t", "<C-w>m", function()
+    vim.cmd([[stopinsert]])
+    toggle_maximize()
+    vim.cmd([[startinsert]])
+end)
+
 -- Move between windows from inside a terminal (e.g. the Claude Code window)
 -- with the usual <C-w>h/j/k/l. Escapes terminal mode first, then navigates.
 vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><C-w>h]])
