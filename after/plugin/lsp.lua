@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     local opts = {buffer = event.buf}
-
+    -- Add inside your LspAttach callback
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -36,6 +36,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
+})
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {
+  desc = 'Show diagnostic under cursor',
+})
+
+vim.keymap.set('n', '<leader>q', function()
+  vim.diagnostic.setloclist()
+  vim.cmd('lopen')
+end, {
+  desc = 'Open diagnostics list',
+})
+
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
+  desc = 'Previous diagnostic',
+})
+
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {
+  desc = 'Next diagnostic',
 })
 
 -- Konfiguriere zusätzliche Server mit der neuen API

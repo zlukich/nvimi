@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/ole/.local/share/nvim/site/pack/packer/start/asyncomplete.vim",
     url = "https://github.com/prabirshrestha/asyncomplete.vim"
   },
+  ["base16-nvim"] = {
+    loaded = true,
+    path = "/home/ole/.local/share/nvim/site/pack/packer/start/base16-nvim",
+    url = "https://github.com/RRethy/base16-nvim"
+  },
   ["claudecode.nvim"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15claudecode\frequire\0" },
     loaded = true,
@@ -211,7 +216,6 @@ _G.packer_plugins = {
     url = "https://github.com/quarto-dev/quarto-nvim"
   },
   ["render-markdown.nvim"] = {
-    config = { "\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0" },
     loaded = true,
     path = "/home/ole/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
     url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
@@ -248,10 +252,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for claudecode.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15claudecode\frequire\0", "config", "claudecode.nvim")
 time([[Config for claudecode.nvim]], false)
--- Config for: render-markdown.nvim
-time([[Config for render-markdown.nvim]], true)
-try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
-time([[Config for render-markdown.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
