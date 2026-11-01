@@ -25,20 +25,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = {buffer = event.buf}
     -- Add inside your LspAttach callback
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    -- Press K a second time to jump into the hover window (scroll with j/k/<C-d>/<C-u>, close with q)
+    vim.keymap.set('n', 'K', function()
+      vim.lsp.buf.hover({ border = 'rounded', max_height = 25, max_width = 90 })
+    end, opts)
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
     vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    vim.keymap.set('n', 'gs', function()
+      vim.lsp.buf.signature_help({ border = 'rounded' })
+    end, opts)
     vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
     vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
   end,
 })
 
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {
+-- Make floating window borders stand out from the background
+local function float_highlights()
+  vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#3b5bdb', bold = true })
+end
+float_highlights()
+vim.api.nvim_create_autocmd('ColorScheme', { callback = float_highlights })
+
+vim.keymap.set('n', '<leader>d', function()
+  vim.diagnostic.open_float({ border = 'rounded' })
+end, {
   desc = 'Show diagnostic under cursor',
 })
 
