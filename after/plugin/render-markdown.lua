@@ -10,4 +10,9 @@ rm.setup({
     -- rendering and keep inline ($...$) latex, which replaces cleanly in place.
     -- For reading dense math nicely, view the rendered notebook (Jupyter/browser).
     latex = { enabled = true, block = false },
+
+    -- Don't style LSP hover / signature-help floats (they are nofile buffers).
+    overrides = {
+        buftype = { nofile = { enabled = false } },
+    },
 })
