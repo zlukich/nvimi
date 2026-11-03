@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/ole/.local/share/nvim/site/pack/packer/start/asyncomplete.vim",
     url = "https://github.com/prabirshrestha/asyncomplete.vim"
   },
-  ["base16-nvim"] = {
-    loaded = true,
-    path = "/home/ole/.local/share/nvim/site/pack/packer/start/base16-nvim",
-    url = "https://github.com/RRethy/base16-nvim"
-  },
   ["claudecode.nvim"] = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15claudecode\frequire\0" },
     loaded = true,
@@ -225,10 +220,20 @@ _G.packer_plugins = {
     path = "/home/ole/.local/share/nvim/site/pack/packer/start/snacks.nvim",
     url = "https://github.com/folke/snacks.nvim"
   },
+  ["solarized.nvim"] = {
+    loaded = true,
+    path = "/home/ole/.local/share/nvim/site/pack/packer/start/solarized.nvim",
+    url = "https://github.com/maxmx03/solarized.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/ole/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/ole/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   undotree = {
     loaded = true,

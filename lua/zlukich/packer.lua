@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
   }
   use({ 'rebelot/kanagawa.nvim' })
   use({ 'cocopon/iceberg.vim' })
+  use({ 'maxmx03/solarized.nvim' })
+  use({ 'folke/tokyonight.nvim' })
   -- main branch is required for Neovim 0.12+ (master is EOL on new nvim).
   use('nvim-treesitter/nvim-treesitter', {branch = 'main', run = ':TSUpdate'})
   use('ThePrimeagen/harpoon')
