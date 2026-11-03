@@ -107,6 +107,9 @@ return require('packer').startup(function(use)
     },
   })
 
+  -- Zen mode: centered code, no distractions. Setup lives in after/plugin/zenmode.lua
+  use({ 'folke/zen-mode.nvim' })
+
   -- Jupyter notebooks. Setup + keymaps live in after/plugin/molten.lua
   -- Inline images (matplotlib plots). Ghostty speaks the kitty graphics
   -- protocol, so the 'kitty' backend is the right one.

@@ -16,8 +16,23 @@ require('neo-tree').setup({
   window = {
     position = 'left',
     width = 32,
+    mappings = {
+      -- open the node under the cursor with the system viewer (e.g. plot PNGs)
+      ['X'] = function(state)
+        vim.ui.open(state.tree:get_node().path)
+      end,
+    },
   },
 })
+
+-- Open the path under the cursor (e.g. "plot_gd.png" in a script) with the system viewer
+vim.keymap.set('n', '<leader>o', function()
+  local path = vim.fn.expand('<cfile>')
+  if not vim.uv.fs_stat(path) then
+    path = vim.fn.expand('%:p:h') .. '/' .. path
+  end
+  vim.ui.open(path)
+end, { desc = 'Open file under cursor externally' })
 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<cr>', { desc = 'Toggle file tree' })
 
